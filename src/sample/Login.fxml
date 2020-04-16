@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
+    <top>
+        <VBox prefHeight="40.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" prefHeight="35.0" prefWidth="255.0" text="Login" textAlignment="CENTER">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="25.0" />
+               </VBox.margin></Separator>
+            </children>
+        </VBox>
+    </top>
+    <bottom>
+        <Button fx:id="loginButton" mnemonicParsing="false" onMouseClicked="#Login" prefHeight="40.0" prefWidth="374.0" text="Login" BorderPane.alignment="CENTER" />
+    </bottom>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="E-mail" />
+            <TextField fx:id="emailField" promptText="e-mail" />
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="5.0" />
+               </VBox.margin></Separator>
+            <Label text="Password" />
+            <PasswordField fx:id="passwordField" promptText="password" />
+            <Label fx:id="infoLabel" textFill="RED">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets bottom="70.0" top="10.0" />
+               </VBox.margin></Label>
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="250.0">
+               <children>
+                  <Label text="Forgot your password?   " />
+                  <Button fx:id="resetPasswordButton" mnemonicParsing="false" onAction="#OpenResetPasswordWindow" text="Reset password" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
