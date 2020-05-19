@@ -30,8 +30,12 @@ public class WSDLRequest
             fromIndex++;
         }
         response.delete(0, response.length());*/
-        for(int id = 35; id < 41; id++)
+        for(int id = 35; id < 42; id++)
         {
+            if(id == 41)
+            {
+                id = 2642;
+            }
             String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:typ=\"http://pis.predmety.fiit.stuba.sk/pis/students/team072customer/types\">\n" +
                     "   <soapenv:Header/>\n" +
                     "   <soapenv:Body>\n" +

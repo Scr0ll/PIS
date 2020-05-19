@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.*;
+import java.awt.*;
 
 public class LoginController extends WSDLRequest
 {
@@ -50,6 +52,11 @@ public class LoginController extends WSDLRequest
         {
             try{
                 System.out.println("open main window");
+                EditSelectedGUI zmluvyScreen = new EditSelectedGUI(customerID);
+                zmluvyScreen.setVisible(true);
+
+                zmluvyScreen.populate(customerID);
+
                 /*FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
                 Parent root = (Parent) loader.load();
                 TODO controller hlavneho menu pre posunutie ID/email pouzivatela
@@ -72,6 +79,19 @@ public class LoginController extends WSDLRequest
             infoLabel.setText("Incorrect login data");
         }
     }
+
+    /*public void OpenMainUser()
+    {
+        try{
+            JFrame frame = new JFrame("main_user_gui");
+            frame.setContentPane(new main_user_gui().mainBackground);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.pack();
+            frame.setVisible(true);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }*/
 
     public void OpenResetPasswordWindow()
     {
