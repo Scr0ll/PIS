@@ -15,12 +15,14 @@ public class Zmluva {
     private String allZmluva;
 
     private String name;
+    private String zmluvaId;
     private String nameZmluva;
     private String licencePlate;
     private LocalDate dateOfCreation;
     private LocalDate dateOfExpiration;
 
     private int sposobPlatby;
+    private String balikyId;
     private String kategoriaVozidla;
     private String stav;
     private String typVozidla;
@@ -45,6 +47,8 @@ public class Zmluva {
         setLicencePlate(allZmluva);
         setStav(allZmluva);
         setNameZmluva(allZmluva);
+        setBalikyId(allZmluva);
+        setZmluvaId(allZmluva);
        /* this.setDateOfCreation(dateOfCreation);
         this.setDateOfExpiration(dateOfExpiration);*/
         /*this.dateOfCreation = dateOfCreation;
@@ -266,6 +270,46 @@ public class Zmluva {
 
     public void setCena(String cena) {
         this.cena = cena;
+    }
+
+    public String getBalikyId() {
+        return balikyId;
+    }
+
+    public void setBalikyId(String allZmluva) {
+
+        //System.out.println(allZmluva);
+        Pattern patternBalikyId = Pattern.compile("<baliky_id>(.*?)</baliky_id>", Pattern.DOTALL);
+        Matcher m_balikyId = patternBalikyId.matcher(allZmluva);
+
+        String balikyId;
+        if (m_balikyId.find()) {
+            balikyId = m_balikyId.group(1);
+        } else {
+            balikyId = "Error.";
+        }
+        //System.out.println(balikyId);
+        this.balikyId = balikyId;
+    }
+
+    public String getZmluvaId() {
+        return zmluvaId;
+    }
+
+    public void setZmluvaId(String allZmluva) {
+
+        //System.out.println(allZmluva);
+        Pattern patternZmluvaId = Pattern.compile("<id>(.*?)</id>", Pattern.DOTALL);
+        Matcher m_zmluvaId = patternZmluvaId.matcher(allZmluva);
+
+        String zmluvaId;
+        if (m_zmluvaId.find()) {
+            zmluvaId = m_zmluvaId.group(1);
+        } else {
+            zmluvaId = "Error.";
+        }
+        //System.out.println(balikyId);
+        this.zmluvaId = zmluvaId;
     }
 
 

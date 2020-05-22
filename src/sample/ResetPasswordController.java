@@ -60,7 +60,7 @@ public class ResetPasswordController extends WSDLRequest
 
             UpdatePassword(customerID, name, email, newPassword);
 
-            //SendEmail(email, newPassword);
+            SendEmail(email, newPassword);
 
             infoLabel.setTextFill(Color.web("#00FF00"));
             infoLabel.setText("Password Changed. Check email");
