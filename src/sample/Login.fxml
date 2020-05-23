@@ -42,6 +42,7 @@
                <VBox.margin>
                   <Insets bottom="70.0" top="10.0" />
                </VBox.margin></Label>
+            <CheckBox fx:id="check" mnemonicParsing="false" text="Pracovnik poisťovne" />
             <HBox alignment="CENTER" prefHeight="40.0" prefWidth="250.0">
                <children>
                   <Label text="Forgot your password?   " />

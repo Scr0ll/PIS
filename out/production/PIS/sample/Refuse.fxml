@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Refuse">
+   <children>
+      <TextArea fx:id="reason" layoutX="47.0" layoutY="41.0" prefHeight="304.0" prefWidth="290.0" promptText="Tu napíše pracovník dôvody odmietnutia" />
+      <Button fx:id="refuse" layoutX="383.0" layoutY="277.0" mnemonicParsing="false" onAction="#sendResult" prefHeight="68.0" prefWidth="166.0" text="Odoslať výsledok klientovi" />
+   </children>
+</AnchorPane>

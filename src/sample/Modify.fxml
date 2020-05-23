@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Modify">
+   <children>
+      <TextArea fx:id="reason" layoutX="77.0" layoutY="22.0" prefHeight="330.0" prefWidth="280.0" promptText="Tu napíše pracovník úpravu návrhu" />
+      <Button fx:id="modify" layoutX="410.0" layoutY="289.0" mnemonicParsing="false" onAction="#sendResult" prefHeight="64.0" prefWidth="164.0" text="Odoslať úpravy klientovi" />
+   </children>
+</AnchorPane>

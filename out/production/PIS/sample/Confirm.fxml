@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="189.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Confirm">
+   <children>
+      <Button fx:id="confirm" layoutX="204.0" layoutY="119.0" mnemonicParsing="false" onAction="#sendResult" prefHeight="45.0" prefWidth="138.0" text="Schválenie" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="169.0" layoutY="34.0" prefHeight="46.0" prefWidth="209.0" text="Potvrďte schválenie návrhu" textAlignment="CENTER" />
+   </children>
+</AnchorPane>

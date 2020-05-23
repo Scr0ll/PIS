@@ -65,6 +65,85 @@ public class WSDLRequest
         return strToReturn;
     }
 
+    public String getUserById(int id){
+        System.out.println(id);
+        String url = "http://pis.predmety.fiit.stuba.sk/pis/ws/Students/Team072Customer";
+        String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:typ=\"http://pis.predmety.fiit.stuba.sk/pis/students/team072customer/types\">\n" +
+                "   <soapenv:Header/>\n" +
+                "   <soapenv:Body>\n" +
+                "      <typ:getById>\n" +
+                "         <id>" + id + "</id>\n" +
+                "      </typ:getById>\n" +
+                "   </soapenv:Body>\n" +
+                "</soapenv:Envelope>";
+        System.out.println("Tu som");
+        SendRequest(url, xml);
+        String strToReturn = response.toString();
+        response.delete(0,response.length());
+        return strToReturn;
+    }
+
+    public String getZmluvy(){
+        String url = "http://pis.predmety.fiit.stuba.sk/pis/ws/Students/Team072Zmluva";
+        String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:typ=\"http://pis.predmety.fiit.stuba.sk/pis/students/team072zmluva/types\">\n" +
+                "   <soapenv:Header/>\n" +
+                "   <soapenv:Body>\n" +
+                "      <typ:getAll>\n" +
+
+                "      </typ:getAll>\n" +
+                "   </soapenv:Body>\n" +
+                "</soapenv:Envelope>";
+        SendRequest(url, xml);
+
+        String strToReturn = response.toString();
+        response.delete(0,response.length());
+        return strToReturn;
+
+    }
+
+    public String getZmluvaByID(String cislo_zmluvy){
+        String url = "http://pis.predmety.fiit.stuba.sk/pis/ws/Students/Team072Zmluva";
+        String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:typ=\"http://pis.predmety.fiit.stuba.sk/pis/students/team072zmluva/types\">\n" +
+                "   <soapenv:Header/>\n" +
+                "   <soapenv:Body>\n" +
+                "      <typ:getByAttributeValue>\n" +
+                "         <attribute_name>cislo_zmluvy</attribute_name>\n" +
+                "         <attribute_value>" + cislo_zmluvy + "</attribute_value>\n" +
+                "         <ids>\n" +
+                "            <!--Zero or more repetitions:-->\n" +
+                "         </ids>\n" +
+                "      </typ:getByAttributeValue>\n" +
+                "   </soapenv:Body>\n" +
+                "</soapenv:Envelope>";
+        SendRequest(url, xml);
+
+        String strToReturn = response.toString();
+        response.delete(0,response.length());
+        return strToReturn;
+    }
+
+    public String getBalikyByZmluva(int id_zmluvy){
+        String url = "http://pis.predmety.fiit.stuba.sk/pis/ws/Students/Team072Balik";
+        String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:typ=\"http://pis.predmety.fiit.stuba.sk/pis/students/team072balik/types\">\n" +
+                "   <soapenv:Header/>\n" +
+                "   <soapenv:Body>\n" +
+                "      <typ:getByAttributeValue>\n" +
+                "         <attribute_name>zmluva_id</attribute_name>\n" +
+                "         <attribute_value>" + id_zmluvy + "</attribute_value>\n" +
+                "         <ids>\n" +
+                "            <!--Zero or more repetitions:-->\n" +
+                "         </ids>\n" +
+                "      </typ:getByAttributeValue>\n" +
+                "   </soapenv:Body>\n" +
+                "</soapenv:Envelope>";
+        SendRequest(url, xml);
+
+        String strToReturn = response.toString();
+        response.delete(0,response.length());
+        return strToReturn;
+    }
+
+
     public void UpdatePassword(int id, String name, String email, String password)
     {
 
@@ -103,6 +182,63 @@ public class WSDLRequest
                 "      </typ:notify>\n" +
                 "   </soapenv:Body>\n" +
                 "</soapenv:Envelope>";
+        SendRequest(url, xml);
+    }
+
+    public void SendEmail(String cislo_zmluvy, String message, String email_poistenca){
+        System.out.println(email_poistenca + message);
+        String url = "http://pis.predmety.fiit.stuba.sk/pis/ws/NotificationServices/Email";
+        String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:typ=\"http://pis.predmety.fiit.stuba.sk/pis/notificationservices/email/types\">\n" +
+                "   <soapenv:Header/>\n" +
+                "   <soapenv:Body>\n" +
+                "      <typ:notify>\n" +
+                "         <team_id>072</team_id>\n" +
+                "         <password>ZXKMZ6</password>\n" +
+                "         <email>" + email_poistenca + "</email>\n" +
+                "         <subject>Posudok</subject>\n" +
+                "         <message>Oznam: " + message + "</message>\n" +
+                "      </typ:notify>\n" +
+                "   </soapenv:Body>\n" +
+                "</soapenv:Envelope>";
+
+        SendRequest(url, xml);
+    }
+
+    public void SendSMS(String message, String phone_number){
+
+        String url = "http://pis.predmety.fiit.stuba.sk/pis/ws/NotificationServices/SMS";
+        String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:typ=\"http://pis.predmety.fiit.stuba.sk/pis/notificationservices/sms/types\">\n" +
+                "   <soapenv:Header/>\n" +
+                "   <soapenv:Body>\n" +
+                "      <typ:notify>\n" +
+                "         <team_id>072</team_id>\n" +
+                "         <password>ZXKMZ6</password>\n" +
+                "         <phone>" + phone_number    + "</phone>\n" +
+                "         <subject>Posudok</subject>\n" +
+                "         <message>Oznam: " + message + "</message>\n" +
+                "      </typ:notify>\n" +
+                "   </soapenv:Body>\n" +
+                "</soapenv:Envelope>";
+
+        SendRequest(url, xml);
+
+    }
+
+    public void SendMail(String adress, String message){
+        String url = "http://pis.predmety.fiit.stuba.sk/pis/ws/NotificationServices/Mail";
+        String xml = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:typ=\"http://pis.predmety.fiit.stuba.sk/pis/notificationservices/mail/types\">\n" +
+                "   <soapenv:Header/>\n" +
+                "   <soapenv:Body>\n" +
+                "      <typ:notify>\n" +
+                "         <team_id>072</team_id>\n" +
+                "         <password>ZXKMZ6</password>\n" +
+                "         <address>" + adress + "</address>\n" +
+                "         <subject>Posudok</subject>\n" +
+                "         <message>Oznam: " + message + "</message>\n" +
+                "      </typ:notify>\n" +
+                "   </soapenv:Body>\n" +
+                "</soapenv:Envelope>";
+
         SendRequest(url, xml);
     }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PosudokController">
+   <children>
+      <Button fx:id="yesButton" layoutX="207.0" layoutY="339.0" mnemonicParsing="false" onAction="#confirm" prefHeight="37.0" prefWidth="120.0" style="-fx-background-color: green;" text="Schváliť" textFill="#ecf5ec" />
+      <Button fx:id="noButton" layoutX="335.0" layoutY="339.0" mnemonicParsing="false" onAction="#refuse" prefHeight="37.0" prefWidth="120.0" style="-fx-background-color: red;" text="Zamietnuť" textFill="#ecf5ec" />
+      <Button fx:id="modButton" layoutX="466.0" layoutY="339.0" mnemonicParsing="false" onAction="#modify" prefHeight="37.0" prefWidth="120.0" style="-fx-background-color: blue;" text="Upraviť" textFill="#ecf5ec" />
+      <ListView layoutX="246.0" layoutY="19.0" prefHeight="268.0" prefWidth="319.0" />
+      <TableView fx:id="table" onMouseClicked="#ShowZmluva" prefHeight="300.0" prefWidth="196.0">
+      </TableView>
+      <Button fx:id="load" layoutX="35.0" layoutY="334.0" mnemonicParsing="false" onAction="#loadData" prefHeight="46.0" prefWidth="112.0" text="Načítaj návrhy" />
+   </children>
+</AnchorPane>

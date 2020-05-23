@@ -11,8 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javax.swing.*;
-import java.awt.*;
+
+import javafx.scene.control.CheckBox;
 
 public class LoginController extends WSDLRequest
 {
@@ -22,7 +22,8 @@ public class LoginController extends WSDLRequest
     @FXML Label infoLabel;
     @FXML Button resetPasswordButton;
     @FXML Button loginButton;
-
+    @FXML
+    CheckBox check;
     private int customerID;
 
     public void Login()
@@ -50,12 +51,27 @@ public class LoginController extends WSDLRequest
 
         if(CheckLoginData(email, password))
         {
-            try{
-                System.out.println("open main window");
-                EditSelectedGUI zmluvyScreen = new EditSelectedGUI(customerID);
-                zmluvyScreen.setVisible(true);
 
-                zmluvyScreen.populate(customerID);
+            if(check.isSelected()){
+                try{
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Posudok.fxml"));
+                    Parent root = (Parent) loader.load();
+                    Stage stage = new Stage();
+                    stage.setTitle("Navrhy na schválenie");
+                    stage.setScene(new Scene(root));
+                    stage.show();
+
+                }catch(Exception e){
+                    System.out.println(e);
+                }
+            }
+            else{
+                try{
+                    System.out.println("open main window");
+                    EditSelectedGUI zmluvyScreen = new EditSelectedGUI(customerID);
+                    zmluvyScreen.setVisible(true);
+
+                    zmluvyScreen.populate(customerID);
 
                 /*FXMLLoader loader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
                 Parent root = (Parent) loader.load();
@@ -70,10 +86,13 @@ public class LoginController extends WSDLRequest
                 currentStage.close();
                 stage.show();*/
 
-            }catch(Exception e){
-                System.out.println(e);
+                }catch(Exception e){
+                    System.out.println(e);
+                }
             }
         }
+
+
         else
         {
             infoLabel.setText("Incorrect login data");
